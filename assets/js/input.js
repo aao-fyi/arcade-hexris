@@ -114,23 +114,10 @@ function addKeyListeners() {
 		return false;
 	});
 
-	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			$("#restartBtn").on('touchstart', function() {
-			init(1);
-			canRestart = false;
-			$("#gameoverscreen").fadeOut();
-		});
-
-	}
-	else {
-		$("#restartBtn").on('mousedown', function() {
-			init(1);
-			canRestart = false;
-			$("#gameoverscreen").fadeOut();
-		});
-
-
-	}
+	$("#restartBtn").on('click', function() {
+		init(1);
+		$("#gameoverscreen").fadeOut();
+	});
 
 }
 function inside (point, vs) {

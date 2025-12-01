@@ -38,12 +38,10 @@ function drawScoreboard() {
     var fontSize = settings.platform == 'mobile' ? 35 : 30;
     var h = trueCanvas.height / 2 + gdy + 100 * settings.scale;
 	if (gameState === 0) {
-		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2 + gdy, 60, "rgb(236, 240, 241)", String.fromCharCode("0xf04b"));// font awesome play button, change
 		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2.1 + gdy - 155 * settings.scale, 150, "#2c3e50", "Hexris");
 		renderText(trueCanvas.width / 2 + gdx + 5 * settings.scale, h + 10, fontSize, "rgb(44,62,80)", 'Play!');
 	} else if (gameState != 0 && textOpacity > 0) {
 		textOpacity -= 0.05;
-		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2 + gdy, 60, "rgb(236, 240, 241)", String.fromCharCode("0xf04b"));// font awesome play button, change
 		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2 + gdy - 155 * settings.scale, 150, "#2c3e50", "Hexris");
 		renderText(trueCanvas.width / 2 + gdx + 5 * settings.scale, h, fontSize, "rgb(44,62,80)", 'Play!');
 		ctx.globalAlpha = scoreOpacity;
@@ -93,7 +91,7 @@ function toggleClass(element, active) {
 
 function showText(text) {
 	var messages = {
-		'paused': "<div class='centeredHeader unselectable'>Game Paused</div>",
+		'paused': "<div class='centeredHeader unselectable fs-1'>Game Paused</div>",
 		'start': "<div class='centeredHeader unselectable' style='line-height:80px;'>Press enter to start</div>"
 	};
 
@@ -108,11 +106,6 @@ function showText(text) {
 
 function setMainMenu() {
 	gameState = 4;
-	canRestart = false;
-	setTimeout(function() {
-		canRestart = 's';
-	}, 500);
-	$('#restartBtn').hide();
 	if ($("#pauseBtn").replace(/^.*[\\\/]/, '') == "btn_pause.svg") {
 		$("#pauseBtn").attr("src","/hexris/img/btn_resume.svg");
 	} else {
@@ -165,9 +158,6 @@ function pause(o) {
 
 	var c = document.getElementById("canvas");
 	if (gameState == -1) {
-		$('#fork-ribbon').fadeOut(300, 'linear');
-		$('#restartBtn').fadeOut(300, "linear");
-
 		$("#pauseBtn").attr("src", "/hexris/img/btn_pause.svg");
 		$('#overlay').fadeOut(300, 'linear');
 		hideText();
@@ -176,11 +166,9 @@ function pause(o) {
 			pausable =true;
 		}, 400);
 	} else if (gameState != -2 && gameState !== 0 && gameState !== 2) {
-		$('#restartBtn').fadeIn(300, "linear");
 		if (message == 'paused') {
 			showText(message);
 		}
-		$('#fork-ribbon').fadeIn(300, 'linear');
 		$("#pauseBtn").attr("src","/hexris/img/btn_resume.svg");
 		$('#overlay').fadeIn(300, 'linear');
 		prevGameState = gameState;

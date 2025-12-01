@@ -125,7 +125,6 @@ function initialize(a) {
 	window.gameState;
 	setStartScreen();
 	if (a != 1) {
-		window.canRestart = 1;
 		window.onblur = function(e) {
 			if (gameState == 1) {
 				pause();
@@ -199,11 +198,8 @@ function startBtnHandler() {
 		}
 	}, 5);
 
-	if (!canRestart) return false;
-
 	if (importing == 1) {
 		init(1);
-		checkVisualElements(0);
 	} else {
 		resumeGame();
 	}

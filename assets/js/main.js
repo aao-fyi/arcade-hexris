@@ -35,22 +35,12 @@ function resumeGame() {
 	gameState = 1;
 	hideUIElements();
 	$('#pauseBtn').show();
-	$('#restartBtn').hide();
 	importing = 0;
 	startTime = Date.now();
-
-	checkVisualElements(0);
-}
-
-function checkVisualElements(arg) {
-	if (!$('#pauseBtn').is(':visible')) $('#pauseBtn').fadeIn(150, "linear");
-	$('#fork-ribbon').fadeOut(150);
-	if (!$('#restartBtn').is(':visible')) $('#restartBtn').fadeOut(150, "linear");
 }
 
 function hideUIElements() {
 	$('#pauseBtn').hide();
-	$('#restartBtn').hide();
 	$('#startBtn').hide();
 }
 
@@ -60,7 +50,6 @@ function init(b) {
 		$("#pauseBtn").attr('src',"/hexris/img/btn_pause.svg");
 
 		clearSaveState();
-		checkVisualElements(1);
 	}
 	if (highscores.length === 0 ){
 		$("#currentHighScore").text(0);
@@ -82,7 +71,6 @@ function init(b) {
 	op = 0;
 	scoreOpacity = 0;
 	gameState = 1;
-	$("#restartBtn").hide();
 	$("#pauseBtn").show();
 	if (saveState.hex !== undefined) gameState = 1;
 
@@ -171,7 +159,6 @@ function setStartScreen() {
 	}
 
 	$('#pauseBtn').hide();
-	$('#restartBtn').hide();
 	$('#startBtn').show();
 
 	gameState = 0;
@@ -206,15 +193,6 @@ function animLoop() {
 			var saveState = localStorage.getItem("saveState") || "{}";
 			saveState = JSONfn.parse(saveState);
 			gameState = 2;
-
-			setTimeout(function() {
-				enableRestart();
-			}, 150);
-
-			if ($('#pauseBtn').is(':visible')) $('#pauseBtn').fadeOut(150, "linear");
-			if ($('#restartBtn').is(':visible')) $('#restartBtn').fadeOut(150, "linear");
-
-			canRestart = 0;
 			clearSaveState();
 		}
 		break;
@@ -260,10 +238,6 @@ function animLoop() {
 	if (!(gameState == 1 || gameState == 2)) {
 		lastTime = Date.now();
 	}
-}
-
-function enableRestart() {
-	canRestart = 1;
 }
 
 function isInfringing(hex) {
