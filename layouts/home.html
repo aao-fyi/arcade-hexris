@@ -1,7 +1,7 @@
 {{ define "main" }}
+  {{/* Canvas */}}
   <canvas id="canvas"></canvas>
   <div id="overlay" class="faded overlay"></div>
-  <div id="startBtn"></div>
 
   {{/* Help */}}
   <div id="info-hexris-offcanvas" class="offcanvas offcanvas-start" tabindex="-1">
@@ -48,6 +48,8 @@
     </div>
   </div>
 
+  {{/* Buttons */}}
+  <button id="startBtn" class="btn position-absolute top-50 start-50 translate-middle fs-1 mt-4 p-5"><span class="py-5 px-3">{{ partial "icon" "play" }}</span></button>
   <div id="openSideBar" class="col col-3 col-sm-2 col-md-1 order-3 order-md-4">
     <button class="btn" title="Information" aria-label="Information" type="button" data-bs-toggle="offcanvas" data-bs-target="#info-hexris-offcanvas" aria-controls="info-hexris-offcanvas">
       <img class="helpText" src="{{ (resources.Get "img/btn_help.svg").RelPermalink }}"/>
@@ -56,9 +58,12 @@
   <div class="faded overlay"></div>
   <img id="pauseBtn" src="{{ (resources.Get "img/btn_pause.svg").RelPermalink }}"/>
   <img id="restartBtn" src="{{ (resources.Get "img/btn_restart.svg").RelPermalink }}"/>
-  <div id="highScoreInGameText">
-      <div id="highScoreInGameTextHeader">HIGH SCORE</div><div id="currentHighScore">10292</div>
+  <div class="position-absolute top-0 start-50 translate-middle mt-4 pt-4 text-center text-dark">
+      <div>HIGH SCORE</div>
+      <div id="currentHighScore" class="fs-1 lh-1">10292</div>
   </div>
+
+  {{/* Game Over */}}
   <div id="gameoverscreen">
       <div id="container">
           <div class="GOTitle">GAME OVER</div>
@@ -74,7 +79,6 @@
 {{ end }}
 
 {{ define "foot" }}
-  {{ $hammerJS := resources.GetRemote "https://raw.githubusercontent.com/hammerjs/hammer.js/refs/tags/1.1.3/hammer.js" }}
   {{ $jsonfnJS := resources.GetRemote "https://raw.githubusercontent.com/vkiryukhin/jsonfn/refs/tags/1.1.0/jsonfn.js" }}
   {{ $keypressJS := resources.GetRemote "https://raw.githubusercontent.com/dmauro/Keypress/refs/tags/1.0.9/keypress.js" }}
   {{ $jqueryJS := resources.GetRemote "https://raw.githubusercontent.com/jquery/jquery/refs/tags/3.6.0/dist/jquery.js" }}
@@ -94,7 +98,7 @@
   {{ $mainJS := resources.Get "js/main.js" }}
   {{ $initializationJS := resources.Get "js/initialization.js" }}
 
-  {{ $hexrisJS := slice $hammerJS $jsonfnJS $keypressJS $jqueryJS $saveStateJS $viewJS $wavegenJS $mathJS $blockJS $hexJS $textJS $comboTimerJS $checkingJS $updateJS $renderJS $inputJS $mainJS $initializationJS | resources.Concat "js/hexris.js" | minify }}
+  {{ $hexrisJS := slice $jsonfnJS $keypressJS $jqueryJS $saveStateJS $viewJS $wavegenJS $mathJS $blockJS $hexJS $textJS $comboTimerJS $checkingJS $updateJS $renderJS $inputJS $mainJS $initializationJS | resources.Concat "js/hexris.js" | minify }}
   {{ $hexrisSRI := $hexrisJS | resources.Fingerprint "sha384" }}
   <script src="{{ $hexrisSRI.RelPermalink }}" integrity="{{ $hexrisSRI.Data.Integrity }}"></script>
 {{ end }}
