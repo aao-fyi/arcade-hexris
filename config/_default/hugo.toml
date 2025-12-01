@@ -1,0 +1,51 @@
+# Info
+baseURL = 'https://arcade.aao.fyi/hexris/'
+languageCode = 'en'
+title = 'Hexris'
+copyright = 'Hexris Contributors'
+
+# Theme
+theme = 'codeberg.org/aao-fyi/shock'
+
+# Features
+disableHugoGeneratorInject = true
+disableKinds = ['taxonomy','term']
+enableGitInfo = true
+enableRobotsTXT = true
+
+# Minify
+[minify]
+  minifyOutput = true
+
+# Build
+[build]
+  # PostCSS
+  writeStats = true
+
+# Module
+[module]
+  # Version
+  [module.hugoVersion]
+    extended = true
+    min = '0.146.0'
+  # Logo
+  [[module.imports]]
+    path = 'codeberg.org/aao-fyi/project-logos'
+  [[module.imports.mounts]]
+    source = 'arcade-hexris'
+    target = 'assets/img/logo/'
+
+# Menus
+[menu]
+  [[menu.footer]]
+    name = 'Source'
+    url = 'https://codeberg.org/aao-fyi/arcade-hexris'
+    weight = 10
+  [[menu.footer]]
+    name = 'Privacy'
+    url = 'https://aao.fyi/privacy/'
+    weight = 20
+  [[menu.footer]]
+    name = 'Terms'
+    url = 'https://aao.fyi/terms/'
+    weight = 30

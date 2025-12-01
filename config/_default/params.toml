@@ -1,0 +1,50 @@
+description = 'An addictive puzzle game inspired by Tetris.'
+
+# Bootstrap
+[bootstrap]
+  javascript = true
+
+# PostCSS
+[postCSS]
+  state = true
+
+# Header
+[header]
+  state = false
+
+# Banner
+[banner]
+  home = false
+  section = false
+  single = false
+
+# Sidebar
+[sidebar]
+  home = false
+  section = false
+  single = false
+
+# Breadcrumbs
+[breadcrumb]
+  home = false
+  section = false
+  single = false
+
+# Heading
+[heading]
+  home = false
+  section = false
+  single = false
+
+# Footer
+[footer]
+  state = false
+
+# Manifest
+[manifest]
+  state = true
+  background = "#333"
+
+# Robots
+[robots]
+  llmsTXT = false
