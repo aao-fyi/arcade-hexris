@@ -1,0 +1,64 @@
+#container {
+    color:#232323;
+    position:absolute;
+    left:50%;
+    top:calc(50%);
+    text-align:center;
+    transform:translate(-50%, -50%);
+    -webkit-transform:translate(-50%, -50%);
+    -moz-transform:translate(-50%, -50%);
+    -ms-transform:translate(-50%, -50%);
+    display:none;
+}
+
+#gameoverscreen {
+    padding:8px;
+}
+
+.GOTitle {
+    font-weight:bold;
+    font-size:24.2000px;
+}
+
+#score {
+    font-size:4vmin;
+    text-align:center;
+    width:30%;
+}
+
+#highscores {
+    text-align:center;
+    list-style:none;
+}
+
+#highScoreInGameTextHeader {
+    color: #bdc3c7;
+    width:100%;
+}
+
+#highScoreInGameText {
+    position: absolute;
+    top:10px;
+    text-align: center;
+    width:200px;
+    left:50%;
+    margin-left:-100px;
+}
+
+#currentHighScore {
+    color: #2c3e50;
+    width:100%;
+    margin-top: -5px;
+    font-size:2em;
+}
+
+#cScore {
+    font-size:60.5000px;
+    font-weight:light;
+    margin-bottom:5px;
+    margin-top:-10px;
+}
+
+#highScoresTitle {
+    margin-bottom:2px;
+}
